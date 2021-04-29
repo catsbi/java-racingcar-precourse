@@ -13,7 +13,7 @@ public class RandomMoveStrategy implements MoveStrategy{
     }
 
     @Override
-    public boolean execute() {
+    public boolean isMovable() {
         return random.nextInt(RANDOM_MAX_NUMBER) > ANCHOR_POINT;
     }
 }

@@ -6,6 +6,8 @@ import java.util.Objects;
 
 public class Point {
     public static final int INIT_POINT = 0;
+    public static final Point ZERO_POINT = new Point(INIT_POINT);
+
     private int point;
 
     public Point() {
@@ -42,5 +44,14 @@ public class Point {
     @Override
     public int hashCode() {
         return Objects.hash(point);
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(point);
+    }
+
+    public boolean isGreaterOrEqual(Point targetPoint) {
+        return this.point >= targetPoint.getPoint();
     }
 }
