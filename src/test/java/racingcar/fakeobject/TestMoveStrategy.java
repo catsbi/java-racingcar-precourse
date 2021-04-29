@@ -10,7 +10,7 @@ public class TestMoveStrategy implements MoveStrategy {
     }
 
     @Override
-    public boolean execute() {
+    public boolean isMovable() {
         return testPoint > 3;
     }
 }
