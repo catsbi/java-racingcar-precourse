@@ -1,33 +1,57 @@
 package racingcar.domain;
 
-import racingcar.dto.GameResultResponse;
+import racingcar.strategy.CarGenerator;
 import racingcar.strategy.MoveStrategy;
 
 import java.util.List;
 
 public class RacingGameImpl implements RacingGame {
+
+    private final Cars cars;
+    private final CarGenerator generator;
+    private final MoveStrategy moveStrategy;
+    private final GameHistories gameHistories;
+
+    public RacingGameImpl(CarGenerator generator, MoveStrategy moveStrategy) {
+        this.generator = generator;
+        this.moveStrategy = moveStrategy;
+        this.cars = new Cars();
+        this.gameHistories = new GameHistories();
+    }
+
     @Override
     public void appendCar(Car car) {
-
+        this.cars.appendCar(car);
     }
 
     @Override
-    public void appendCar(List<Car> cars) {
-
+    public void appendCar(String name) {
+        this.cars.appendCar(generator.generate(name));
     }
 
     @Override
-    public void appendCar(Cars cars) {
-
+    public void appendCar(List<String> names) {
+        for (String name : names) {
+            appendCar(name);
+        }
     }
 
     @Override
-    public void play(MoveStrategy strategy) {
+    public void play(Round round) {
+        while (round.hasNextRound()) {
+            round.nextRound();
+            cars.notifyAllMove(moveStrategy);
+            record();
+        }
+    }
 
+    private void record() {
+        gameHistories.appendHistory(GameHistory.from(cars));
     }
 
     @Override
-    public GameResultResponse getResult() {
-        return null;
+    public GameHistories getResult() {
+        return gameHistories;
     }
+
 }

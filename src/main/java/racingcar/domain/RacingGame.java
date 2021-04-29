@@ -1,18 +1,16 @@
 package racingcar.domain;
 
-import racingcar.dto.GameResultResponse;
-import racingcar.strategy.MoveStrategy;
-
 import java.util.List;
 
 public interface RacingGame {
+
     void appendCar(Car car);
 
-    void appendCar(List<Car> cars);
+    void appendCar(String car);
 
-    void appendCar(Cars cars);
+    void appendCar(List<String> names);
 
-    void play(MoveStrategy strategy);
+    void play(Round round);
 
-    GameResultResponse getResult();
+    GameHistories getResult();
 }

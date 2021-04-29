@@ -1,11 +1,22 @@
 package racingcar.service;
 
-import racingcar.strategy.MoveStrategy;
+import racingcar.domain.GameHistories;
+import racingcar.domain.RacingGame;
+import racingcar.domain.Round;
+
+import java.util.List;
 
 public class RacingGameService {
-    private final MoveStrategy moveStrategy;
+    private final RacingGame racingGame;
 
-    public RacingGameService(MoveStrategy moveStrategy) {
-        this.moveStrategy = moveStrategy;
+    public RacingGameService(RacingGame racingGame) {
+        this.racingGame = racingGame;
+    }
+
+    public GameHistories playGame(List<String> names, int roundCount) {
+        racingGame.appendCar(names);
+        racingGame.play(new Round(roundCount));
+
+        return racingGame.getResult();
     }
 }
