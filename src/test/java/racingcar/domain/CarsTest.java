@@ -1,32 +1,35 @@
 package racingcar.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.strategy.CarGenerator;
+import racingcar.strategy.RacingCarGenerator;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-
 @DisplayName("자동차 일급 콜렉션 객체 테스트")
 class CarsTest {
+    private CarGenerator carGenerator;
+
+    @BeforeEach
+    void setup() {
+        carGenerator = new RacingCarGenerator();
+    }
 
     @DisplayName("콜렉션 생성 테스트")
     @Test
-    void create_Cars_test() {
+    void create_Cars_test(){
         //given
-        final String CRONG = "crong";
-        final String POBI = "pobi";
-        final String BBO = "bbo";
-
-        List<Car> carList = Arrays.asList(new RacingCar(CRONG), new RacingCar(POBI), new RacingCar(BBO));
+        List<String> names =Arrays.asList("crong", "pobi", "bbo");
 
         //when
-        Cars cars = Cars.of(carList);
+        Cars cars = Cars.of(names, carGenerator);
 
         //then
-        assertThat(cars.containsAll(carList)).isTrue();
+
     }
+
 
 }

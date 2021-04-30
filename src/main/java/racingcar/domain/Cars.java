@@ -50,4 +50,8 @@ public class Cars{
     public int size() {
         return cars.size();
     }
+
+    public boolean contains(Car car) {
+        return cars.contains(car);
+    }
 }

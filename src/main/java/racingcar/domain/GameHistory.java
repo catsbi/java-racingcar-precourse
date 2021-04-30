@@ -3,7 +3,9 @@ package racingcar.domain;
 import racingcar.dto.CarResponse;
 import racingcar.dto.Winners;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GameHistory {
@@ -42,21 +44,28 @@ public class GameHistory {
     }
 
     private Winners findNamesByPoint(Point maxPoint) {
-        Map<Point, Winners> groupMap = groupByPoint();
+        Map<Point, List<CarName>> groupMap = groupByPoint();
+        List<CarName> names = groupMap.get(maxPoint);
 
-        return groupMap.get(maxPoint);
+        return new Winners(names);
     }
 
-    private Map<Point, Winners> groupByPoint() {
-        Map<Point, Winners> winnersMap = new HashMap<>();
+    private Map<Point, List<CarName>> groupByPoint() {
+        Map<Point, List<CarName>> groupMap = new HashMap<>();
         for (CarResponse response : history.values()) {
-            Winners winners = winnersMap.getOrDefault(response.getPoint(), new Winners());
-            winners.append(response.getName());
+            List<CarName> list = groupMap.getOrDefault(response.getPoint(), new ArrayList<>());
+            addWithoutDuplicate(list, response.getName());
 
-            winnersMap.put(response.getPoint(), winners);
+            groupMap.put(response.getPoint(), list);
         }
-        return winnersMap;
-        
+
+        return groupMap;
+    }
+
+    private void addWithoutDuplicate(List<CarName> list, CarName name) {
+        if (!list.contains(name)) {
+            list.add(name);
+        }
     }
 
     private Point getMaxPoint() {

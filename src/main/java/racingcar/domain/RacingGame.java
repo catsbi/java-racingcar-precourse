@@ -10,6 +10,8 @@ public interface RacingGame {
 
     void appendCar(List<String> names);
 
+    boolean containsCar(Car car);
+
     void play(Round round);
 
     GameHistories getResult();

@@ -9,7 +9,11 @@ public class GameHistories {
     public static final int VALID_MIN_SEQUENCE= 1;
 
     private final Map<Integer, GameHistory> histories;
-    private static Integer sequence = 0;
+    private Integer sequence;
+
+    {
+        sequence = 0;
+    }
 
     public GameHistories() {
         histories = new HashMap<>();
@@ -17,10 +21,6 @@ public class GameHistories {
 
     public void appendHistory(GameHistory history) {
         histories.put(++sequence, history);
-    }
-
-    public Set<Integer> keys() {
-        return new HashSet<>(histories.keySet());
     }
 
     public Collection<GameHistory> values() {
@@ -45,5 +45,9 @@ public class GameHistories {
     public Winners getWinners() {
         GameHistory gameHistory = lastHistory();
         return gameHistory.getWinners();
+    }
+
+    public int size() {
+        return histories.size();
     }
 }

@@ -10,8 +10,12 @@ public class RacingCar implements Car{
     private Point point;
 
     public RacingCar(String name) {
-        this.name = new CarName(name);
-        this.point = new Point();
+        this(new CarName(name), new Point());
+    }
+
+    public RacingCar(CarName name, Point point) {
+        this.name = name;
+        this.point = point;
     }
 
     @Override

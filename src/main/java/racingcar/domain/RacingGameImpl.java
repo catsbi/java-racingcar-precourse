@@ -37,6 +37,11 @@ public class RacingGameImpl implements RacingGame {
     }
 
     @Override
+    public boolean containsCar(Car car) {
+        return cars.contains(car);
+    }
+
+    @Override
     public void play(Round round) {
         while (round.hasNextRound()) {
             round.nextRound();
