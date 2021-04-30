@@ -3,6 +3,7 @@ package racingcar.dto;
 import racingcar.domain.CarName;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Winners {
@@ -20,9 +21,12 @@ public class Winners {
         return names;
     }
 
-    public void append(CarName name) {
-        if (!names.contains(name)) {
-            names.add(name);
-        }
+    public int size() {
+        return names.size();
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(names.toArray());
     }
 }
