@@ -6,29 +6,25 @@ import racingcar.exceptions.InvalidParameterException;
 import java.util.*;
 
 public class GameHistories {
-    public static final int VALID_MIN_SEQUENCE= 1;
+    public static final int VALID_MIN_SEQUENCE = 0;
 
-    private final Map<Integer, GameHistory> histories;
-    private Integer sequence;
-
-    {
-        sequence = 0;
-    }
+    private final List<GameHistory> histories;
 
     public GameHistories() {
-        histories = new HashMap<>();
+        histories = new ArrayList<>();
+
     }
 
     public void appendHistory(GameHistory history) {
-        histories.put(++sequence, history);
+        histories.add(history);
     }
 
-    public Collection<GameHistory> values() {
-        return new ArrayList<>(histories.values());
+    public List<GameHistory> values() {
+        return new ArrayList<>(histories);
     }
 
     public GameHistory lastHistory() {
-        return histories.get(sequence);
+        return histories.get(size() - 1);
     }
 
     public GameHistory get(int index) {
@@ -37,7 +33,7 @@ public class GameHistories {
     }
 
     private void validateIndex(int index) {
-        if (index < VALID_MIN_SEQUENCE || index > sequence) {
+        if (index < VALID_MIN_SEQUENCE || index >= size()) {
             throw new InvalidParameterException();
         }
     }
