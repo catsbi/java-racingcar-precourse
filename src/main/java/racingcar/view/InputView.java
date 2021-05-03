@@ -1,14 +1,11 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
-import racingcar.domain.Round;
-
 import java.util.List;
 
 public interface InputView {
 
-    Round questionRound();
+    int questionRound();
 
-    List<Car> questionCarNames();
+    List<String> questionCarNames();
 
 }

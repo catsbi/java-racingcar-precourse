@@ -1,9 +1,9 @@
 package racingcar.view;
 
-import racingcar.dto.GameResultResponse;
+import racingcar.domain.GameHistories;
 
 public interface OutputView {
-    void renderRacingProcess(GameResultResponse response);
+    void renderRacingProcess(GameHistories result);
 
-    void renderWinners(GameResultResponse response);
+    void renderWinners(GameHistories result);
 }
