@@ -33,10 +33,6 @@ public class Cars{
         }
     }
 
-    public boolean containsAll(List<Car> cars) {
-        return this.cars.containsAll(cars);
-    }
-
     public void notifyAllMove(MoveStrategy strategy) {
         for (Car car : cars) {
             car.move(strategy);

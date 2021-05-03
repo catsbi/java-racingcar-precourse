@@ -3,10 +3,7 @@ package racingcar.domain;
 import racingcar.dto.CarResponse;
 import racingcar.dto.Winners;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GameHistory {
     private final Map<CarName, CarResponse> history;
@@ -27,6 +24,10 @@ public class GameHistory {
         }
 
         return history;
+    }
+
+    public Collection<CarResponse> values() {
+        return history.values();
     }
 
     public int size() {

@@ -5,6 +5,7 @@ import racingcar.exceptions.InvalidNameException;
 import java.util.Objects;
 
 public class CarName {
+    public static final int NAME_LIMIT_SIZE = 5;
     private final String name;
 
     public CarName(String name) {
@@ -13,7 +14,7 @@ public class CarName {
     }
 
     private void validateName(String name) {
-        if (Objects.isNull(name) || name.length() > 5 || name.isEmpty()) {
+        if (Objects.isNull(name) || name.length() > NAME_LIMIT_SIZE || name.isEmpty()) {
             throw new InvalidNameException();
         }
     }
