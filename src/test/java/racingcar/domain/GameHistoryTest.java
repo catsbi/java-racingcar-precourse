@@ -10,7 +10,6 @@ import racingcar.strategy.MoveStrategy;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("자동차경주 기록 저장 객체 기능 테스트")
 class GameHistoryTest {

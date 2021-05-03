@@ -9,7 +9,6 @@ import racingcar.exceptions.NotExistsNextRoundException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("레이싱 반복 횟수 일급객체 Round 테스트")
 class RoundTest {

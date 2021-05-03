@@ -13,7 +13,6 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Point Wrapper class 테스트")
 class PointTest {
@@ -30,7 +29,7 @@ class PointTest {
     }
 
     @DisplayName("유효하지 않음 범위의 위치 생성 테스트")
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0} 위치는 예외 발생")
     @ValueSource(ints = {-2, -1})
     void create_point_exception_test(int inputPoint) {
         assertThatThrownBy(()->{

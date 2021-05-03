@@ -7,7 +7,6 @@ import racingcar.exceptions.InvalidNameException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("자동차 이름 Wrapper Class 테스트")
 class CarNameTest {

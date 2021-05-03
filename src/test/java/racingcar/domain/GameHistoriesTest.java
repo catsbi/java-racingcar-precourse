@@ -11,7 +11,7 @@ import racingcar.fakeobject.TestMoveStrategy;
 import racingcar.strategy.MoveStrategy;
 
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -65,7 +65,7 @@ class GameHistoriesTest {
         gameHistories.appendHistory(secondHistory);
 
         //when
-        Collection<GameHistory> values = gameHistories.values();
+        List<GameHistory> values = gameHistories.values();
 
         //then
         assertThat(values).hasSize(2);
@@ -95,8 +95,8 @@ class GameHistoriesTest {
         gameHistories.appendHistory(secondHistory);
 
         //when
-        GameHistory firstFindHistory = gameHistories.get(1);
-        GameHistory secondFindHistory = gameHistories.get(2);
+        GameHistory firstFindHistory = gameHistories.get(0);
+        GameHistory secondFindHistory = gameHistories.get(1);
 
         //then
         assertThat(firstFindHistory).isEqualTo(firstHistory);
@@ -105,8 +105,8 @@ class GameHistoriesTest {
     }
 
     @DisplayName("자동차 경주 기록에서 유효하지 않은 위치의 값을 조회할 수 없다.")
-    @ParameterizedTest
-    @ValueSource(ints = {0, 3})
+    @ParameterizedTest(name = "인덱스 {0}의 값은 조회할수 없다.")
+    @ValueSource(ints = {-1, 3})
     void get_exception_test(int inputIndex) {
         //given
         gameHistories.appendHistory(secondHistory);

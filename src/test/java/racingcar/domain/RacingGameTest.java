@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.dto.Winners;
 import racingcar.fakeobject.TestMoveStrategy;
 import racingcar.strategy.MoveStrategy;
 import racingcar.strategy.RacingCarGenerator;
@@ -34,7 +33,7 @@ public class RacingGameTest {
     }
 
     @DisplayName("자동차 경주에 자동차 객체 참가 테스트")
-    @ParameterizedTest
+    @ParameterizedTest(name = "이름 {0}으로 참가")
     @ValueSource(strings = {"crong", "pobi", "bbo"})
     void appendCar_test(String inputName) {
         //when

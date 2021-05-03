@@ -17,7 +17,7 @@ class RacingCarTest {
 
 
     @DisplayName("자동차 객체 생성 테스트")
-    @ParameterizedTest
+    @ParameterizedTest(name = "{index} {0}이름으로 Car객체 생성")
     @ValueSource(strings = {"power", "crong", "pobi" })
     void create_car_test(String inputCarName) {
         //when
@@ -28,7 +28,7 @@ class RacingCarTest {
     }
 
     @DisplayName("자동차 객체 생성 실패 테스트 - 이름을 5글자 초과되게 짓는다.")
-    @ParameterizedTest
+    @ParameterizedTest(name = "자동차이름을 {0}으로 생성하면 예외 발생")
     @NullAndEmptySource
     @ValueSource(strings = {"hansol", "catsbi"})
     void create_car_exception_text(String inputCarName) {
@@ -39,7 +39,7 @@ class RacingCarTest {
     }
 
     @DisplayName("자동차 전진 테스트")
-    @ParameterizedTest
+    @ParameterizedTest(name = "{index}생성숫자가 {0}일 때 이동거리는 {1}이다")
     @CsvSource(value = {"1:0", "2:0", "3:0", "4:1", "5:1"}, delimiter = ':')
     void moveTest(int number, int inputPoint) {
         //given
