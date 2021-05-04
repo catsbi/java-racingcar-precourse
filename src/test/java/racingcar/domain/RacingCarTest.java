@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exceptions.InvalidNameException;
-import racingcar.fakeobject.TestMoveStrategy;
+import racingcar.fakeobject.TestTargetMoveStrategy;
 import racingcar.strategy.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -43,11 +43,12 @@ class RacingCarTest {
     @CsvSource(value = {"1:0", "2:0", "3:0", "4:1", "5:1"}, delimiter = ':')
     void moveTest(int number, int inputPoint) {
         //given
-        MoveStrategy strategy = new TestMoveStrategy(number);
+        MoveStrategy moveStrategy = TestTargetMoveStrategy.testTargetMoveStrategy;
+        ((TestTargetMoveStrategy)moveStrategy).setTargetCount(number);
         Car testCar = new RacingCar("test");
 
         //when
-        testCar.move(strategy);
+        testCar.move(moveStrategy);
 
         //then
         assertThat(testCar.getCurrentPoint()).isEqualTo(new Point(inputPoint));

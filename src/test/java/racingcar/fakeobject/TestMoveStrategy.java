@@ -3,14 +3,17 @@ package racingcar.fakeobject;
 import racingcar.strategy.MoveStrategy;
 
 public class TestMoveStrategy implements MoveStrategy {
-    private int testPoint;
+    public static final MoveStrategy alwaysTrueMoveStrategy = new TestMoveStrategy(true);
+    public static final MoveStrategy alwaysFalseMoveStrategy = new TestMoveStrategy(false);
 
-    public TestMoveStrategy(int number) {
-        this.testPoint = number;
+    private final boolean movable;
+
+    public TestMoveStrategy(boolean movable) {
+        this.movable = movable;
     }
 
     @Override
     public boolean isMovable() {
-        return testPoint > 3;
+        return movable;
     }
 }

@@ -7,6 +7,6 @@ public class TestRacingConfig extends RacingConfig{
 
     @Override
     public MoveStrategy moveStrategy() {
-        return new TestMoveStrategy(4);
+        return TestMoveStrategy.alwaysTrueMoveStrategy;
     }
 }

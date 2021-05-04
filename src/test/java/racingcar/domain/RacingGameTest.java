@@ -17,14 +17,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("자동차 경주 게임 진행 테스트")
 public class RacingGameTest {
     private MoveStrategy onlyMoveStrategy;
-    private MoveStrategy onlyStopStrategy;
     private RacingGame racingGame;
     private List<String> carList;
 
     @BeforeEach
     void setup() {
-        onlyMoveStrategy = new TestMoveStrategy(4);
-        onlyStopStrategy = new TestMoveStrategy(3);
+        onlyMoveStrategy = TestMoveStrategy.alwaysTrueMoveStrategy;
+        MoveStrategy onlyStopStrategy = TestMoveStrategy.alwaysFalseMoveStrategy;
         carList = Arrays.asList("crong","pobi","bbo");
 
         racingGame = new RacingGameImpl(new RacingCarGenerator(), onlyMoveStrategy);

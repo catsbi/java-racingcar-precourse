@@ -24,7 +24,7 @@ class GameHistoryTest {
 
     @BeforeEach
     void setup() {
-        moveStrategy = new TestMoveStrategy(4);
+        moveStrategy = TestMoveStrategy.alwaysTrueMoveStrategy;
 
         crongCar = new RacingCar(new CarName("crong"), new Point(3));
         pobiCar = new RacingCar(new CarName("pobi"), new Point(4));
