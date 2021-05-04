@@ -42,9 +42,8 @@ public class RacingGameImpl implements RacingGame {
     }
 
     @Override
-    public void play(Round round) {
-        while (round.hasNextRound()) {
-            round.nextRound();
+    public void play(int round) {
+        for (int index = 0; index < round; index++) {
             cars.notifyAllMove(moveStrategy);
             record();
         }

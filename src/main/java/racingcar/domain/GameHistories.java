@@ -12,7 +12,6 @@ public class GameHistories {
 
     public GameHistories() {
         histories = new ArrayList<>();
-
     }
 
     public void appendHistory(GameHistory history) {

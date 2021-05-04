@@ -2,12 +2,14 @@ package racingcar.view;
 
 import racingcar.domain.GameHistories;
 import racingcar.exceptions.InvalidNameException;
+import racingcar.exceptions.InvalidRoundException;
 
 import java.util.List;
 
 public class ViewImpl implements View{
     public static final String REQUIRED_VALID_NUMBER = "1이상의 정수를 입력해주세요.";
     public static final int NAME_LIMIT_SIZE = 5;
+    public static final String REQUIRED_VALID_CAR_NAME = "자동차의 이름은 5글자 이하만 가능합니다.";
     private final InputView inputView;
     private final OutputView outputView;
 
@@ -19,10 +21,19 @@ public class ViewImpl implements View{
     @Override
     public int questionRound() {
         try {
-            return inputView.questionRound();
+            int round = inputView.questionRound();
+            validateInputRound(round);
+
+            return round;
         } catch (NumberFormatException ne) {
             System.out.println(REQUIRED_VALID_NUMBER);
             return questionRound();
+        }
+    }
+
+    private void validateInputRound(int round) {
+        if (round < 1) {
+            throw new InvalidRoundException();
         }
     }
 
@@ -34,7 +45,7 @@ public class ViewImpl implements View{
 
             return inputNames;
         }catch(InvalidNameException ie){
-            System.out.println("자동차의 이름은 5글자 이하만 가능합니다.");
+            System.out.println(REQUIRED_VALID_CAR_NAME);
             return questionCarNames();
         }
     }

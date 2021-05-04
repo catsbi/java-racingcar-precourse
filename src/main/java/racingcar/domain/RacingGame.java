@@ -12,7 +12,7 @@ public interface RacingGame {
 
     boolean containsCar(Car car);
 
-    void play(Round round);
+    void play(int round);
 
     GameHistories getResult();
 }

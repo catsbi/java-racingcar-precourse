@@ -47,7 +47,7 @@ public class RacingGameTest {
     @Test
     void play_test() {
         //when
-        racingGame.play(new Round(5));
+        racingGame.play(5);
 
         //then
         GameHistories result = racingGame.getResult();

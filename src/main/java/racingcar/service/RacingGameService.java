@@ -2,7 +2,6 @@ package racingcar.service;
 
 import racingcar.domain.GameHistories;
 import racingcar.domain.RacingGame;
-import racingcar.domain.Round;
 
 import java.util.List;
 
@@ -15,7 +14,7 @@ public class RacingGameService {
 
     public GameHistories playGame(List<String> names, int roundCount) {
         racingGame.appendCar(names);
-        racingGame.play(new Round(roundCount));
+        racingGame.play(roundCount);
 
         return racingGame.getResult();
     }
