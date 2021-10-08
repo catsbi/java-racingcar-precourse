@@ -94,4 +94,13 @@
 
 ### validation
 - Validator : 유효성 검증 기능을 제공한다. 
-- CarRacingValidator: 자동차 경주 도메인에 대한 유효성 검증 기능 구현체  
+- NameValidator: 이름에 대한 검증 기능 구현체
+- DistanceValidator: 거리에 대한 검증 기능 구현체
+
+### Exception
+- InvalidDistanceException: 유효하지 않은 거리에 대한 예외 클래스
+- InvalidNameException: 유효하지 않은 이름에 대한 예외 클래스
+
+### Supplier
+- DistanceSupplier : 거리정보를 제공하는 인터페이스
+- NameSupplier : 이름 정보를 제공하는 인터페이스
