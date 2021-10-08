@@ -69,7 +69,8 @@
 - CarRacingController: 자동차 게임에 대한 사용자의 요청을 처리하는 클래스
 
 ### Domain
-- Car : 경주에 참가하는 자동차 클래스
+- Car : 자동차의 기능을 정의하는 인터페이스
+- RacingCar: 경주용 자동차 구현체
 - Cars : 자동차 클래스에 대한 일급 컬렉션
 - Name: 자동차의 이름 원시 값의 Wrapper 클래스
 - Distance: 자동차가 이동한 거리에 대한 Wrapper 클래스
@@ -80,7 +81,7 @@
 - CarRacingProgressList : 자동차 경주 진행율 목록을 저장하는 일급 컬렉션
 
 ### View
-- View: 입/출력을 제공하는 인터페이스, InputView,OutPutView를 다중 상속한다.
+- CarRacingView: 입/출력을 제공하는 인터페이스, InputView,OutPutView를 다중 상속한다.
 - OutPutView: 출력 기능을 제공하는 인터페이스
 - InPutView: 입력 기능을 제공하는 인터페이스
 - CarRacingInputView: 자동차 경주 입력 기능 구현체
