@@ -90,3 +90,7 @@
 ### Strategy
 - MoveStrategy: 이동에 대한 전략을 제공하는 인터페이스
 - RandomMoveStrategy: 랜덤으로 이동값을 정해 그 결과에 따라 이동 여부를 정하는 구현체 
+
+### validation
+- Validator : 유효성 검증 기능을 제공한다. 
+- CarRacingValidator: 자동차 경주 도메인에 대한 유효성 검증 기능 구현체  
