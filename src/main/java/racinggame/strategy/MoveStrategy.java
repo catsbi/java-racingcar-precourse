@@ -1,6 +1,6 @@
 package racinggame.strategy;
 
 @FunctionalInterface
-public interface MoveStrategy<T> {
-    T move();
+public interface MoveStrategy {
+    boolean movable();
 }

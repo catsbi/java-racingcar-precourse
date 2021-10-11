@@ -51,4 +51,8 @@ public class Distance {
     public String toString() {
         return value + "";
     }
+
+    protected void changeWith(long distance) {
+        this.value += distance;
+    }
 }
