@@ -8,7 +8,7 @@ public class DistanceValidator implements Validator{
 
     @Override
     public String validate(Object source) {
-        int distance = (int) source;
+        long distance = (long) source;
 
         if (distance >= 0) {
             return EMPTY_STR;
