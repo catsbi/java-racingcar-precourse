@@ -1,4 +1,7 @@
 package racinggame.view;
 
-public class CarRacingInputView {
+public interface CarRacingInputView {
+    String requestCarNames();
+
+    int requestRound();
 }

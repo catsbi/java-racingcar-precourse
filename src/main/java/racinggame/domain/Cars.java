@@ -6,13 +6,14 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
- * 자동차
+ * 자동차 객체들을 관리하는 일급 컬렉션
  */
 public class Cars {
     public static final String DELIMITER = ",";
     private final List<Car> store = new ArrayList<>();
 
-    private Cars() {}
+    private Cars() {
+    }
 
     public static Cars newInstance() {
         return new Cars();
@@ -43,12 +44,24 @@ public class Cars {
         store.add(car);
     }
 
+    /**
+     * 모든 자동차에게 인자로 받은 동작을 수행시키도록 한다.
+     *
+     * @param consumer 자동차가 수행할 동작.
+     */
     public void notifyAll(Consumer<Car> consumer) {
         for (Car car : store) {
             consumer.accept(car);
         }
     }
 
+    /**
+     * 자동차목록을 순회하며 인자로 전달받은 동작을 수행하여 결과를 리스트화 하여 반환한다.
+     *
+     * @param function 자동차 객체를 인자로 동작을 수행하여 결과를 반환하는 함수
+     * @param <T> 반환할 리스트의 요소 타입
+     * @return 변환된 요소들의 목록
+     */
     public <T> List<T> map(Function<Car, T> function) {
         List<T> list = new ArrayList<>();
 
@@ -59,6 +72,12 @@ public class Cars {
         return list;
     }
 
+    /**
+     * 목록에 인자로 전달받은 자동차의 존재 여부를 반환한다.
+     *
+     * @param car 조회할 자동차
+     * @return 존재 여부
+     */
     public boolean contains(Car car) {
         return store.contains(car);
     }

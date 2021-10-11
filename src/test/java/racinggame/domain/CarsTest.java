@@ -1,7 +1,7 @@
 package racinggame.domain;
 
 import nextstep.utils.Randoms;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -33,8 +33,8 @@ class CarsTest {
         mRandoms = mockStatic(Randoms.class);
     }
 
-    @AfterEach
-    void afterClass() {
+    @AfterAll
+    public static void afterClass() {
         mRandoms.close();
     }
 

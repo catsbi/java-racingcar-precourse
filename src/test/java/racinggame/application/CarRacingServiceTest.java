@@ -67,7 +67,7 @@ class CarRacingServiceTest {
         void carRacingWithInvalidData(String names, int round) {
             given(moveStrategy.movable()).willReturn(true);
 
-            assertThatThrownBy(()-> carRacingService.carRacing(names, round))
+            assertThatThrownBy(() -> carRacingService.carRacing(names, round))
                     .isInstanceOf(InvalidNameException.class);
 
 

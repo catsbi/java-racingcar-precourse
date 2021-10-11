@@ -1,13 +1,15 @@
 package racinggame.strategy;
 
 import nextstep.utils.Randoms;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
+
+import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -24,8 +26,8 @@ class RandomMoveStrategyTest {
         mRandoms = mockStatic(Randoms.class);
     }
 
-    @AfterEach
-    void afterClass() {
+    @AfterAll
+    public static void afterClass() {
         mRandoms.close();
     }
 
@@ -44,10 +46,7 @@ class RandomMoveStrategyTest {
             @BeforeEach
             void setUp() {
                 given(Randoms.pickNumberInRange(anyInt(), anyInt()))
-                        .willReturn(0)
-                        .willReturn(1)
-                        .willReturn(2)
-                        .willReturn(3);
+                        .willReturn(new Random().nextInt(3));
             }
 
             @DisplayName("거짓을 반환한다.")
@@ -66,12 +65,8 @@ class RandomMoveStrategyTest {
             @BeforeEach
             void setUp() {
                 given(Randoms.pickNumberInRange(anyInt(), anyInt()))
-                        .willReturn(4)
-                        .willReturn(5)
-                        .willReturn(6)
-                        .willReturn(7)
-                        .willReturn(8)
-                        .willReturn(9);
+                        .willReturn(new Random().nextInt(5) + 4);
+
             }
 
             @DisplayName("참을 반환한다.")

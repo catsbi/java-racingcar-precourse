@@ -16,6 +16,13 @@ public class CarRacingService {
         this.moveStrategy = moveStrategy;
     }
 
+    /**
+     * 자동차 경주를 인자로 전달한 라운드만큼 진행하고 그 결과를 반환한다.
+     *
+     * @param names 참가할 경주 자동차 이름목록
+     * @param round 경주를 진행할 횟수
+     * @return 자동차 경주 결과
+     */
     public CarRacingProgressList carRacing(String names, int round) {
         CarRacingProgressList progressList = new CarRacingProgressList();
         final Cars cars = Cars.from(names);
@@ -26,6 +33,7 @@ public class CarRacingService {
 
             progressList.add(progress);
         }
+
 
         return progressList;
     }

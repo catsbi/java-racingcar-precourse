@@ -29,15 +29,6 @@ public class CarRacingProgressList {
         store.add(progress);
     }
 
-    public <T> List<T> map(Function<CarRacingProgress, T> function) {
-        List<T> list = new ArrayList<>();
-        for (CarRacingProgress progress : store) {
-            list.add(function.apply(progress));
-        }
-
-        return list;
-    }
-
     public CarRacingProgress get(int index) {
         if (index < 0 || index >= store.size()) {
             throw new OutOfIndexException(index);
@@ -48,7 +39,7 @@ public class CarRacingProgressList {
     public String toString(Function<CarData, String> function) {
         String resultStr = "";
         for (CarRacingProgress progress : store) {
-            resultStr = resultStr.concat(progress.toString(function));
+            resultStr = resultStr.concat(progress.toString(function)).concat(System.lineSeparator());
         }
 
         return resultStr;
@@ -56,5 +47,11 @@ public class CarRacingProgressList {
 
     public int size() {
         return store.size();
+    }
+
+    public String getWinners() {
+        final CarRacingProgress lastProgress = store.get(store.size() - 1);
+
+        return lastProgress.getWinners();
     }
 }

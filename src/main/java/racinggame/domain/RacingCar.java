@@ -34,6 +34,11 @@ public class RacingCar implements Car {
         return name;
     }
 
+    /**
+     * 자동차 전진 동작으로 인자값 전진 전략의 결과에 따라 참일 경우 이동, 정지를 수행한다.
+     *
+     * @param strategy 전진 전략
+     */
     public void move(MoveStrategy strategy) {
         if (strategy.movable()) {
             distance.changeWith(MOVE_DISTANCE);

@@ -2,6 +2,9 @@ package racingcar.validation;
 
 import java.util.Objects;
 
+/**
+ * 예외 응답 정보
+ */
 public class ErrorResponse {
     private final boolean validated;
     private final String message;
@@ -19,9 +22,15 @@ public class ErrorResponse {
         return new ErrorResponse(true, message);
     }
 
+    /**
+     * 유효 여부를 반환한다.
+     *
+     * @return 유효 여부
+     */
     public boolean isValidated() {
         return validated;
     }
+
 
     public String getMessage() {
         return message;

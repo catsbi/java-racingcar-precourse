@@ -1,4 +1,7 @@
 package racinggame.view;
 
-public class CarRacingOutputView {
+import racinggame.dto.CarRacingProgressList;
+
+public interface CarRacingOutputView {
+    void drawRacingProgress(CarRacingProgressList progressList);
 }
