@@ -32,7 +32,7 @@
 
 ## 구현해야 하는 기능 상세
 - 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
-  - 주어진 횟수 동안 n대의 자동차에게 전진 명령을 전달 하는 기능: notifyCars()
+  - 주어진 횟수 동안 n대의 자동차에게 전진 명령을 전달 하는 기능: notifyAll()
   - 자동차를 이동 전략에 따라 전진 혹은 멈추게 하는 기능: move(MoveStrategy strategy)
 
 - 각 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
@@ -41,10 +41,10 @@
   
 - 자동차 이름은 쉼표(`,`)를 기준으로 구분하며 이름은 5자 이하만 가능하다.
   - 구분자(delimiter)로 문자열을 구분하는 기능: split(str)
-  - 분리한 문자열의 유효성을 검사하는 기능: validateCarName();
+  - 분리한 문자열의 유효성을 검사하는 기능: validate();
   
 - 사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
-  - requestGameRound()
+  - requestRound()
   
 - 전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4 이상일 경우 전진하고, 3 이 하의 값이면 멈춘다.
   - RandomMoveStrategy()
@@ -81,12 +81,12 @@
 - CarRacingProgressList : 자동차 경주 진행율 목록을 저장하는 일급 컬렉션
 
 ### View
-- CarRacingView: 입/출력을 제공하는 인터페이스, InputView,OutPutView를 다중 상속한다.
-- OutPutView: 출력 기능을 제공하는 인터페이스
-- InPutView: 입력 기능을 제공하는 인터페이스
-- CarRacingInputView: 자동차 경주 입력 기능 구현체
-- CarRacingProxyInputView: 자동차 경주 입력 기능 프록시 구현체
-- CarRacingOutPutView: 자동차 경주 출력 기능 구현체
+- CarRacingView: 입/출력을 제공하는 인터페이스, CarRacingInputView,CarRacingOutPutView 다중 상속한다.
+- CarRacingViewImpl : CarRacingView의 구현체
+- CarRacingInputView: 자동차 경주 입력 기능 인터페이스
+- CarRacingOutPutView: 자동차 경주 출력 기능 인터페이스
+- CarRacingInputViewImpl: 자동차 경주 입력 기능 구현체
+- CarRacingOutPutViewImpl: 자동차 경주 출력 기능 구현체
 
 ### Strategy
 - MoveStrategy: 이동에 대한 전략을 제공하는 인터페이스
@@ -100,6 +100,9 @@
 ### Exception
 - InvalidDistanceException: 유효하지 않은 거리에 대한 예외 클래스
 - InvalidNameException: 유효하지 않은 이름에 대한 예외 클래스
+- NotFoundValidatorException : 유효한 검증기를 찾지 못했을 경우 발생하는 예외 클래스
+- OutOfIndexException : 유효하지 않은 범위의 인덱스로 조회를 시도하는 경우 발생하는 예외 클래스
+- ParameterNullPointException : 검증 데이터가 null인 경우 발생하는 예외 클래스
 
 ### Supplier
 - DistanceSupplier : 거리정보를 제공하는 인터페이스

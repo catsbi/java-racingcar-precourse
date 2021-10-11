@@ -7,10 +7,12 @@ import racinggame.domain.Name;
 
 public class CarRacingInputViewImpl implements CarRacingInputView {
     public static final String ERROR_PREFIX = "[ERROR]";
+    public static final String REQUEST_ROUND_MESSAGE = "시도할 회수는 몇회인가요?";
+    public static final String REQUEST_CAR_NAMES_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
 
     @Override
     public String requestCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(REQUEST_CAR_NAMES_MESSAGE);
         final String names = Console.readLine();
         final String message = nameValidateResult(names);
 
@@ -34,7 +36,7 @@ public class CarRacingInputViewImpl implements CarRacingInputView {
     @Override
     public int requestRound() {
         try {
-            System.out.println("시도할 회수는 몇회인가요?");
+            System.out.println(REQUEST_ROUND_MESSAGE);
             final String roundStr = Console.readLine();
 
             return Integer.parseInt(roundStr);
