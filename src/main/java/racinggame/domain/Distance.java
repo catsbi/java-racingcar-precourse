@@ -55,4 +55,8 @@ public class Distance {
     protected void changeWith(long distance) {
         this.value += distance;
     }
+
+    public long getValue() {
+        return value;
+    }
 }
