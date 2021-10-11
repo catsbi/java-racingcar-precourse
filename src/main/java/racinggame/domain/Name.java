@@ -23,7 +23,7 @@ public class Name {
             throw new InvalidNameException(response.getMessage());
         }
 
-        return new Name(name);
+        return new Name(name.trim());
     }
 
     @Override

@@ -1,14 +1,18 @@
 package racinggame.dto;
 
+import racinggame.exception.OutOfIndexException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class CarRacingProgress {
-    private final List<CarData> store = new ArrayList<>();
+    private final List<CarData> store;
 
-    public CarRacingProgress() {}
+    public CarRacingProgress() {
+        store  = new ArrayList<>();
+    }
 
     public static CarRacingProgress from(List<CarData> carDataList) {
         final CarRacingProgress progress = new CarRacingProgress();
@@ -35,5 +39,26 @@ public class CarRacingProgress {
         }
 
         return list;
+    }
+
+    public CarData get(int index) {
+        if (index < 0 || index >= store.size()) {
+            throw new OutOfIndexException(index);
+        }
+
+        return store.get(index);
+    }
+
+    public String toString(Function<CarData, String> function) {
+        String progressStr = "";
+        for (CarData carData : store) {
+            progressStr = progressStr.concat(function.apply(carData));
+        }
+
+        return progressStr;
+    }
+
+    public int size() {
+        return store.size();
     }
 }

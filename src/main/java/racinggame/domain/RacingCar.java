@@ -20,6 +20,10 @@ public class RacingCar implements Car {
         return new RacingCar(Name.from(name), Distance.from(distance));
     }
 
+    public static RacingCar from(String name) {
+        return of(name, 0);
+    }
+
     @Override
     public Distance getDistance() {
         return distance;

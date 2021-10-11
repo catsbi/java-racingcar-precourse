@@ -9,6 +9,7 @@ import java.util.function.Function;
  * 자동차
  */
 public class Cars {
+    public static final String DELIMITER = ",";
     private final List<Car> store = new ArrayList<>();
 
     private Cars() {}
@@ -20,6 +21,16 @@ public class Cars {
     public static Cars from(List<Car> carList) {
         final Cars cars = newInstance();
         cars.addAll(carList);
+
+        return cars;
+    }
+
+    public static Cars from(String carNames) {
+        final Cars cars = newInstance();
+
+        for (String name : carNames.split(DELIMITER)) {
+            cars.add(RacingCar.from(name));
+        }
 
         return cars;
     }
