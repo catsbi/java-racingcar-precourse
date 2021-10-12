@@ -74,11 +74,12 @@
 - Cars : 자동차 클래스에 대한 일급 컬렉션
 - Name: 자동차의 이름 원시 값의 Wrapper 클래스
 - Distance: 자동차가 이동한 거리에 대한 Wrapper 클래스
+- Round: 게임 진행 횟수 Wrapper 클래스
 
 ### DTO
 - CarData: 경주에 참가한 자동차의 현재 상태를 저장해 노출하는 자동차 응답 객체
 - CarRacingProgress: 자동차 응답 객체 목록을 관리하는 일급 컬렉션으로 기록 시점의 자동차 경주 진행율을 의미한다.
-- CarRacingProgressList : 자동차 경주 진행율 목록을 저장하는 일급 컬렉션
+- CarRacingResultData: 자동차 경주 라운드 별 기록과 우승자 이름 목록을 가지는 응답 객체
 
 ### View
 - CarRacingView: 입/출력을 제공하는 인터페이스, CarRacingInputView,CarRacingOutPutView 다중 상속한다.
@@ -96,6 +97,7 @@
 - Validator : 유효성 검증 기능을 제공한다. 
 - NameValidator: 이름에 대한 검증 기능 구현체
 - DistanceValidator: 거리에 대한 검증 기능 구현체
+- RoundValidator: 게임 진행 횟수에 대한 검증 기능 구현체
 
 ### Exception
 - InvalidDistanceException: 유효하지 않은 거리에 대한 예외 클래스
@@ -103,6 +105,8 @@
 - NotFoundValidatorException : 유효한 검증기를 찾지 못했을 경우 발생하는 예외 클래스
 - OutOfIndexException : 유효하지 않은 범위의 인덱스로 조회를 시도하는 경우 발생하는 예외 클래스
 - ParameterNullPointException : 검증 데이터가 null인 경우 발생하는 예외 클래스
+- InvalidRoundValueException : 게임 진행 횟수가 0이하인 경우 발생하는 예외 클래스
+- RoundOverProcessException : 라운드 횟수 이상 진행하려 할 때 발생하는 예외 클래스
 
 ### Supplier
 - DistanceSupplier : 거리정보를 제공하는 인터페이스
