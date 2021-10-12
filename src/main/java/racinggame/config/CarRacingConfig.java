@@ -2,11 +2,13 @@ package racinggame.config;
 
 import racingcar.validation.DistanceValidator;
 import racingcar.validation.NameValidator;
+import racingcar.validation.RoundValidator;
 import racingcar.validation.Validators;
 import racinggame.application.CarRacingService;
 import racinggame.controller.CarRacingController;
 import racinggame.domain.Distance;
 import racinggame.domain.Name;
+import racinggame.domain.Round;
 import racinggame.strategy.MoveStrategy;
 import racinggame.strategy.RandomMoveStrategy;
 import racinggame.view.CarRacingInputView;
@@ -24,6 +26,7 @@ public class CarRacingConfig {
     public CarRacingConfig() {
         Validators.addValidator(Name.class, new NameValidator());
         Validators.addValidator(Distance.class, new DistanceValidator());
+        Validators.addValidator(Round.class, new RoundValidator());
     }
 
     public CarRacingController carRacingController() {
