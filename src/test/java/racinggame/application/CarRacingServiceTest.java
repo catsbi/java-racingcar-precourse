@@ -7,9 +7,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.validation.DistanceValidator;
 import racingcar.validation.NameValidator;
+import racingcar.validation.RoundValidator;
 import racingcar.validation.Validators;
 import racinggame.domain.Distance;
 import racinggame.domain.Name;
+import racinggame.domain.Round;
 import racinggame.dto.CarRacingProgress;
 import racinggame.dto.CarRacingResultData;
 import racinggame.exception.InvalidNameException;
@@ -33,6 +35,7 @@ class CarRacingServiceTest {
     void setUp() {
         Validators.addValidator(Name.class, new NameValidator());
         Validators.addValidator(Distance.class, new DistanceValidator());
+        Validators.addValidator(Round.class, new RoundValidator());
 
         moveStrategy = mock(RandomMoveStrategy.class);
         carRacingService = new CarRacingService(moveStrategy);

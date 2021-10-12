@@ -1,9 +1,11 @@
 package racinggame.view;
 
 import nextstep.utils.Console;
+import racingcar.validation.ErrorResponse;
 import racingcar.validation.Validators;
 import racinggame.domain.Cars;
 import racinggame.domain.Name;
+import racinggame.domain.Round;
 
 public class CarRacingInputViewImpl implements CarRacingInputView {
     public static final String ERROR_PREFIX = "[ERROR]";
@@ -17,7 +19,7 @@ public class CarRacingInputViewImpl implements CarRacingInputView {
         final String message = nameValidateResult(names);
 
         if (!message.isEmpty()) {
-            System.out.println(ERROR_PREFIX + message);
+            printErrorMessage(message);
             return requestCarNames();
         }
 
@@ -38,12 +40,23 @@ public class CarRacingInputViewImpl implements CarRacingInputView {
         try {
             System.out.println(REQUEST_ROUND_MESSAGE);
             final String roundStr = Console.readLine();
+            final int round = Integer.parseInt(roundStr);
 
-            return Integer.parseInt(roundStr);
+            final ErrorResponse response = Validators.validate(round, Round.class);
+
+            if (!response.isValidated()) {
+                printErrorMessage(response.getMessage());
+                return requestRound();
+            }
+            return round;
 
         } catch (NumberFormatException e) {
-            System.out.println(ERROR_PREFIX + e.getMessage());
+            printErrorMessage(e.getMessage());
             return requestRound();
         }
+    }
+
+    private void printErrorMessage(String message) {
+        System.out.println(ERROR_PREFIX + message);
     }
 }

@@ -21,8 +21,8 @@ public class NameValidator implements Validator {
         final String name = String.valueOf(source);
 
         if (Objects.nonNull(name)
-                && name.length() < 6
-                && !name.isEmpty()) {
+                && name.trim().length() < 6
+                && !name.trim().isEmpty()) {
             return EMPTY_STR;
         }
 

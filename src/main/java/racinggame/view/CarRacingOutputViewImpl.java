@@ -1,26 +1,32 @@
 package racinggame.view;
 
+
 import racinggame.dto.CarData;
 import racinggame.dto.CarRacingProgress;
 import racinggame.dto.CarRacingResultData;
 
+import java.util.Collections;
 import java.util.List;
 
 public class CarRacingOutputViewImpl implements CarRacingOutputView {
     private static final StringBuilder sb = new StringBuilder();
     public static final String FINAL_WINNERS_FORMAT = "최종 우승자는 %s 입니다.";
+    public static final String SKID_MARK = "-";
+    public static final String EMPTY_STR = "";
+    public static final String CAR_DATA_FORMAT = "%s : %s";
+    public static final String WINNER_DELIMITER = ",";
 
     @Override
     public void drawRacingProgress(CarRacingResultData resultData) {
-        clearStringBuilder();
-
         drawRacingProgressList(resultData.getProgressList());
         drawRacingWinners(resultData.getWinners());
     }
 
     private void drawRacingProgressList(List<CarRacingProgress> progressList) {
+        clearStringBuilder();
+
         for (CarRacingProgress progress : progressList) {
-            sb.append(progress.toString(this::drawRacingCarData))
+            sb.append(progress.toString(this::toStringCarData))
                     .append(System.lineSeparator());
         }
 
@@ -29,26 +35,25 @@ public class CarRacingOutputViewImpl implements CarRacingOutputView {
 
     private void drawRacingWinners(List<String> winnerNames) {
         clearStringBuilder();
-        final String winners = String.join(",", winnerNames);
+
+        final String winners = String.join(WINNER_DELIMITER, winnerNames);
 
         sb.append(String.format(FINAL_WINNERS_FORMAT, winners));
         System.out.println(sb);
     }
 
-    private String drawRacingCarData(CarData carData) {
-        return String.format("%s : %s", carData.getName(), makeDistance(carData.getDistance()));
+    private String toStringCarData(CarData carData) {
+        final String skidMark = makeDistance(carData.getDistance());
+
+        return String.format(CAR_DATA_FORMAT, carData.getName(), skidMark);
     }
 
     private String makeDistance(long distance) {
-        for (int i = 0; i < distance; i++) {
-            sb.append("-");
-        }
-        sb.append(System.lineSeparator());
-
-        return sb.toString();
+        return String.join(SKID_MARK, Collections.nCopies((int) distance + 1, EMPTY_STR))
+                + System.lineSeparator();
     }
 
     private void clearStringBuilder() {
-        sb.replace(0, sb.length(), "");
+        sb.replace(0, sb.length(), EMPTY_STR);
     }
 }
