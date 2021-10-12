@@ -1,7 +1,7 @@
 package racinggame.controller;
 
 import racinggame.application.CarRacingService;
-import racinggame.dto.CarRacingProgressList;
+import racinggame.dto.CarRacingResultData;
 import racinggame.view.CarRacingView;
 
 /**
@@ -23,8 +23,8 @@ public class CarRacingController {
         final String carNames = carRacingView.requestCarNames();
         final int round = carRacingView.requestRound();
 
-        final CarRacingProgressList progressList = carRacingService.carRacing(carNames, round);
+        final CarRacingResultData resultData = carRacingService.carRacing(carNames, round);
 
-        carRacingView.drawRacingProgress(progressList);
+        carRacingView.drawRacingProgress(resultData);
     }
 }

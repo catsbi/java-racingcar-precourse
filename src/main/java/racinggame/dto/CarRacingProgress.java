@@ -2,29 +2,17 @@ package racinggame.dto;
 
 import racinggame.exception.OutOfIndexException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Function;
 
 public class CarRacingProgress {
-    public static final String DELIMITER = ",";
+    private final int round;
     private final List<CarData> store;
 
-    public CarRacingProgress() {
-        store = new ArrayList<>();
-    }
-
-    public static CarRacingProgress from(List<CarData> carDataList) {
-        final CarRacingProgress progress = new CarRacingProgress();
-        progress.addAll(carDataList);
-
-        return progress;
-    }
-
-    public void addAll(List<CarData> carDataList) {
-        store.addAll(carDataList);
+    public CarRacingProgress(int round, List<CarData> store) {
+        this.round = round;
+        this.store = Collections.unmodifiableList(store);
     }
 
     public CarData get(int index) {
@@ -48,15 +36,7 @@ public class CarRacingProgress {
         return store.size();
     }
 
-    public String getWinners() {
-        long maxDistance = 0;
-        Map<Long, String> winnersMap = new HashMap<>();
-
-        for (CarData carData : store) {
-            maxDistance = Math.max(carData.getDistance(), maxDistance);
-            winnersMap.merge(carData.getDistance(), carData.getName(), (name, putName) -> name.concat(DELIMITER + putName));
-        }
-
-        return winnersMap.get(maxDistance);
+    public int getRound() {
+        return round;
     }
 }

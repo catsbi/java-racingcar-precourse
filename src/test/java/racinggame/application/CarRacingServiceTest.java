@@ -11,10 +11,12 @@ import racingcar.validation.Validators;
 import racinggame.domain.Distance;
 import racinggame.domain.Name;
 import racinggame.dto.CarRacingProgress;
-import racinggame.dto.CarRacingProgressList;
+import racinggame.dto.CarRacingResultData;
 import racinggame.exception.InvalidNameException;
 import racinggame.strategy.MoveStrategy;
 import racinggame.strategy.RandomMoveStrategy;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -45,12 +47,13 @@ class CarRacingServiceTest {
         @CsvSource(value = {"crong,pobi,catbi,titi:2", "marvl,bora,catbi,level:3", "bbo,laro,niamo,sisol:5"}, delimiter = ':')
         void carRacingWithValidData(String names, int round) {
             given(moveStrategy.movable()).willReturn(true);
-            final CarRacingProgressList results = carRacingService.carRacing(names, round);
+            final CarRacingResultData results = carRacingService.carRacing(names, round);
 
-            assertThat(results.size()).isEqualTo(round);
+            assertThat(results.getProgressList().size()).isEqualTo(round);
 
+            final List<CarRacingProgress> progresses = results.getProgressList();
             for (int i = 0; i < round; i++) {
-                final CarRacingProgress progress = results.get(i);
+                final CarRacingProgress progress = progresses.get(i);
                 assertThatProgress(progress, i + 1L);
             }
         }

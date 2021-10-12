@@ -19,7 +19,7 @@ public class Validators {
     /**
      * 검증기를 새로 등록한다. 검증을 원하는 타입을 KEY로 사용한다.
      *
-     * @param type 검증 대상 타입
+     * @param type      검증 대상 타입
      * @param validator 검증기
      */
     public static void addValidator(Class<?> type, Validator validator) {
@@ -31,7 +31,7 @@ public class Validators {
      * 검증기가 있는지 확인한다.
      *
      * @param value 검증 대상 값
-     * @param type 검증 지원 타입
+     * @param type  검증 지원 타입
      * @return 예외 응답 객체
      */
     public static ErrorResponse validate(Object value, Class<?> type) {

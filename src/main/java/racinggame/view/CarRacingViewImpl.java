@@ -1,6 +1,6 @@
 package racinggame.view;
 
-import racinggame.dto.CarRacingProgressList;
+import racinggame.dto.CarRacingResultData;
 
 public class CarRacingViewImpl implements CarRacingView {
     private final CarRacingInputView carRacingInputView;
@@ -23,7 +23,7 @@ public class CarRacingViewImpl implements CarRacingView {
     }
 
     @Override
-    public void drawRacingProgress(CarRacingProgressList progressList) {
-        carRacingOutputView.drawRacingProgress(progressList);
+    public void drawRacingProgress(CarRacingResultData resultData) {
+        carRacingOutputView.drawRacingProgress(resultData);
     }
 }

@@ -15,6 +15,7 @@ import racinggame.strategy.MoveStrategy;
 import racinggame.strategy.RandomMoveStrategy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -109,4 +110,19 @@ class CarsTest {
         cars.notifyAll(car -> car.move(moveStrategy));
         cars.notifyAll(car -> assertThat(car.getDistance()).isEqualTo(Distance.from(1)));
     }
+
+    @DisplayName("getWinners 메서드로 참가 자동차중 우승자 이름 목록을 구할 수 있다.")
+    @Test
+    void getWinners() {
+        final List<Car> carList = Arrays.asList(RacingCar.of("catbi", 5),
+                RacingCar.of("pobi", 6),
+                RacingCar.of("bbo", 3));
+
+        final Cars cars = Cars.from(carList);
+
+        final List<String> winners = cars.getWinners();
+        assertThat(winners).hasSize(1).contains("pobi");
+
+    }
+
 }
